@@ -1,0 +1,12 @@
+pyjavaproperties
+================
+
+This is a fork of the "python replacement for java.util.Properties" recipe
+on ASPN: http://code.activestate.com/recipes/496795/ and uploaded by 
+Anand Balachandran Pillai <abpillai@gmail.com>. 
+
+As with all ASPN recipes not otherwise licensed, the original recipe is under
+the MIT License. For more information, see the ASPN terms of service here:
+
+http://code.activestate.com/help/terms/
+
