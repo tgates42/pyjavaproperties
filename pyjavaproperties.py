@@ -35,7 +35,7 @@ class Properties(object):
         # This is used for dumping the properties to a file
         # using the 'store' method
         self._origprops = {}
-
+        self._keyorder = []
         # Dictionary mapping keys from property
         # dictionary to pristine dictionary
         self._keymap = {}
@@ -157,7 +157,7 @@ class Properties(object):
                 key, value = line[:sepidx], line[sepidx+1:]
             else:
                 key,value = line,''
-
+            self._keyorder.append(key)
             self.processPair(key, value)
             
     def processPair(self, key, value):
@@ -283,8 +283,10 @@ class Properties(object):
             tstamp = time.strftime('%a %b %d %H:%M:%S %Z %Y', time.localtime())
             out.write(''.join(('#',tstamp,'\n')))
             # Write properties from the pristine dictionary
-            for prop, val in self._origprops.items():
-                out.write(''.join((prop,'=',self.escape(val),'\n')))
+            for prop in self._keyorder:
+                if prop in self._origprops:
+                    val = self._origprops[prop]
+                    out.write(''.join((prop,'=',self.escape(val),'\n')))
                 
             out.close()
         except IOError, e:

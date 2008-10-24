@@ -40,6 +40,8 @@ it's XML, which is a form of self-punishment. :)
 Plans
 ------------------
 Here is a rough plan of features:
+
+- Keep/maintain blank lines and comments found in the original file
 - Make the module compatible with the new methods in J2SE 5.0
 - Switch to/add python property access rather than direct dictionary get/set
 - Add unit tests
@@ -50,7 +52,7 @@ Here is a rough plan of features:
 
 Usage
 ------------------
-This is the easy part:
+This is the easy part::
 
     from pyjavaproperties import Properties
     p = Properties()
@@ -69,6 +71,11 @@ property keys
 
 Changes & News
 --------------
+
+0.2:
+    - Added an internal list (self._keyorder) to keep an ordered index of keys
+      as they are encountered, so the file can we written-back out in the 
+      same order.
 
 0.1:
     - Initial release/fork. 

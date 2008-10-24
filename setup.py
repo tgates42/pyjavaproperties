@@ -15,7 +15,7 @@ f.close()
 
 setup(
     name='pyjavaproperties',
-    version='0.1',
+    version='0.2',
     author='Jesse Noller',
     author_email = 'jnoller@gmail.com',
     description = 'Python replacement for java.util.Properties.',
