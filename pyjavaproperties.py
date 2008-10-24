@@ -209,6 +209,9 @@ class Properties(object):
             # Store entry in keymap
             self._keymap[key] = oldkey
         
+        if key not in self._keyorder:
+            self._keyorder.append(key)
+        
     def escape(self, value):
 
         # Java escapes the '=' and ':' in the value

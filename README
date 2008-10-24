@@ -72,6 +72,10 @@ property keys
 Changes & News
 --------------
 
+0.3:
+    - Keys that are added which were not part of the original file
+      are simply appended to the index. Shenanigans.
+
 0.2:
     - Added an internal list (self._keyorder) to keep an ordered index of keys
       as they are encountered, so the file can we written-back out in the 
