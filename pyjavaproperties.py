@@ -81,7 +81,7 @@ class Properties(object):
         # This key= this value
         # key = value1 value2 value3
         
-        # Any line that starts with a '#' is considerered a comment
+        # Any line that starts with a '#' or '!' is considerered a comment
         # and skipped. Also any trailing or preceding whitespaces
         # are removed from the key/value.
         
@@ -97,7 +97,7 @@ class Properties(object):
             # Skip null lines
             if not line: continue
             # Skip lines which are comments
-            if line[0] == '#': continue
+            if line[0] in ('#','!'): continue
             # Some flags
             escaped=False
             # Position of first separation char
