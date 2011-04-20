@@ -75,6 +75,8 @@ property keys
 
 Changes & News
 --------------
+0.6: 
+    - Fix license, whitespace.
 
 0.4:
     - Patch from Pepper Lebeck-Jobe for handling ! style comments.
