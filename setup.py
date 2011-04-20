@@ -15,13 +15,13 @@ f.close()
 
 setup(
     name='pyjavaproperties',
-    version='0.5',
+    version='0.6',
     author='Jesse Noller',
     author_email = 'jnoller@gmail.com',
     description = 'Python replacement for java.util.Properties.',
     long_description = long_description,
     url='http://pypi.python.org/pypi/pyjavaproperties',
-    license = 'MIT License',
+    license = 'PSF License',
       classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
