@@ -233,12 +233,11 @@ class Properties(object):
     def load(self, stream):
         """ Load properties from an open file stream """
 
-        # For the time being only accept file input streams
-        if type(stream) is not file:
-            raise TypeError,'Argument should be a file object!'
-        # Check for the opened mode
-        if stream.mode != 'r':
-            raise ValueError,'Stream should be opened in read-only mode!'
+        if type(stream) is file:
+            if stream.mode != 'r':
+                raise ValueError,'Stream should be opened in read-only mode!'
+        elif not hasattr(stream, 'read'):
+            raise TypeError,'Argument should be a file-like object!'
 
         try:
             lines = stream.readlines()
@@ -277,8 +276,11 @@ class Properties(object):
         """ Write the properties list to the stream 'out' along
         with the optional 'header' """
 
-        if out.mode[0] != 'w':
-            raise ValueError,'Steam should be opened in write mode!'
+        if type(out) is file:
+            if out.mode[0] != 'w':
+                raise ValueError,'Stream should be opened in write mode!'
+        elif not hasattr(out, 'write'):
+            raise TypeError,'Stream should be file-like!'
 
         try:
             out.write(''.join(('#',header,'\n')))
