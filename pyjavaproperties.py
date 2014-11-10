@@ -290,8 +290,6 @@ class Properties(object):
                 if prop in self._origprops:
                     val = self._origprops[prop]
                     out.write(''.join((prop,'=',self.escape(val),'\n')))
-
-            out.close()
         except IOError, e:
             raise
 
