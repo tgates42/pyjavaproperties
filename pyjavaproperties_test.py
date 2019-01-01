@@ -97,7 +97,7 @@ class PyJavaPropertiesTest(unittest.TestCase):
     properties.store(stream)
 
   def testParsePropertiesOutputFile(self):
-    with tempfile.TemporaryFile(mode='w') as f:
+    with tempfile.TemporaryFile(mode='wb') as f:
       self._testParsePropertiesOutput(f)
 
   def testParsePropertiesOutputBytesIO(self):

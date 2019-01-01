@@ -233,7 +233,7 @@ class Properties(object):
     def load(self, stream):
         """ Load properties from an open file stream """
 
-        if type(stream) is file:
+        if hasattr(stream, 'mode'):
             if stream.mode != 'r':
                 raise ValueError('Stream should be opened in read-only mode!')
         elif not hasattr(stream, 'read'):
@@ -276,14 +276,14 @@ class Properties(object):
         """ Write the properties list to the stream 'out' along
         with the optional 'header' """
 
-        if type(out) is file:
+        if hasattr(out, 'mode'):
             if out.mode[0] != 'w':
                 raise ValueError('Stream should be opened in write mode!')
         elif not hasattr(out, 'write'):
             raise TypeError('Stream should be file-like!')
 
         try:
-            out.write(''.join(('#',header,'\n')))
+            out.write((''.join(('#',header,'\n'))).encode('iso8859-1'))
             # Write timestamp
             tstamp = time.strftime('%a %b %d %H:%M:%S %Z %Y', time.localtime())
             out.write(''.join(('#',tstamp,'\n')))
