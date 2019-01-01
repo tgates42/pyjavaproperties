@@ -14,13 +14,13 @@ long_description = f.read().strip()
 f.close()
 
 setup(
-    name='pyjavaproperties',
+    name='pyjavaproperties3',
     version='0.6',
     author='Jesse Noller',
     author_email = 'jnoller@gmail.com',
-    description = 'Python replacement for java.util.Properties.',
+    description = 'Python 3 replacement for java.util.Properties.',
     long_description = long_description,
-    url='http://pypi.python.org/pypi/pyjavaproperties',
+    url='http://pypi.python.org/pypi/pyjavaproperties3',
     license = 'PSF License',
       classifiers=[
         'Development Status :: 3 - Alpha',
@@ -29,7 +29,7 @@ setup(
         'Topic :: Software Development :: Libraries',
         'Topic :: Software Development :: Libraries :: Python Modules',
       ],
-    py_modules=['pyjavaproperties'],
+    py_modules=['pyjavaproperties3'],
     packages=[''],
     package_dir={'': '.'},
     )

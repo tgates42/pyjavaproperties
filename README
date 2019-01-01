@@ -1,8 +1,8 @@
 ================
-pyjavaproperties
+pyjavaproperties3
 ================
 
-* Project hosting: <http://bitbucket.org/jnoller/pyjavaproperties/>
+* Project hosting: <https://github.com/tgates42/pyjavaproperties/>
 
 .. contents::
 
@@ -58,7 +58,7 @@ Usage
 ------------------
 This is the easy part::
 
-    from pyjavaproperties import Properties
+    from pyjavaproperties3 import Properties
     p = Properties()
     p.load(open('test2.properties'))
     p.list()

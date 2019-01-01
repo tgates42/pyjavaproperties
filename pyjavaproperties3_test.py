@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-"""Basic tests to ensure pyjavaproperties behaves like java.util.Properties.
+"""Basic tests to ensure pyjavaproperties3 behaves like java.util.Properties.
 
 Created - Pepper Lebeck-Jobe (eljobe@gmail.com)
 """
@@ -11,11 +11,11 @@ from io import BytesIO
 from io import StringIO
 import tempfile
 
-from pyjavaproperties import Properties
+from pyjavaproperties3 import Properties
 
 
-class PyJavaPropertiesTest(unittest.TestCase):
-  """Tests pyjavaproperties complies to java.util.Properties contract."""
+class PyJavaProperties3Test(unittest.TestCase):
+  """Tests pyjavaproperties3 complies to java.util.Properties contract."""
 
   def setUp(self):
     test_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'testdata')
