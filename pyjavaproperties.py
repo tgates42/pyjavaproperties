@@ -238,9 +238,12 @@ class Properties(object):
                 raise ValueError('Stream should be opened in read-only mode!')
         elif not hasattr(stream, 'read'):
             raise TypeError('Argument should be a file-like object!')
+        needs_decoding = not hasattr(stream, 'encoding')
 
         try:
             lines = stream.readlines()
+            if needs_decoding:
+                lines = [line.decode('iso8859-1') for line in lines]
             self.__parse(lines)
         except IOError as e:
             raise
@@ -277,21 +280,32 @@ class Properties(object):
         with the optional 'header' """
 
         if hasattr(out, 'mode'):
-            if out.mode[0] != 'w':
+            if out.mode != 'wb':
                 raise ValueError('Stream should be opened in write mode!')
         elif not hasattr(out, 'write'):
             raise TypeError('Stream should be file-like!')
+        assert type(header) is str, 'Header must be unicode'
+        needs_encoding = not hasattr(out, 'encoding')
 
         try:
-            out.write((''.join(('#',header,'\n'))).encode('iso8859-1'))
+            data = u''.join((u'#',header,u'\n'))
+            if needs_encoding:
+                data = data.encode('iso8859-1')
+            out.write(data)
             # Write timestamp
             tstamp = time.strftime('%a %b %d %H:%M:%S %Z %Y', time.localtime())
-            out.write(''.join(('#',tstamp,'\n')))
+            data = u''.join((u'#',tstamp,u'\n'))
+            if needs_encoding:
+                data = data.encode('iso8859-1')
+            out.write(data)
             # Write properties from the pristine dictionary
             for prop in self._keyorder:
                 if prop in self._origprops:
                     val = self._origprops[prop]
-                    out.write(''.join((prop,'=',self.escape(val),'\n')))
+                    data = u''.join((prop,u'=',self.escape(val),u'\n'))
+                    if needs_encoding:
+                        data = data.encode('iso8859-1')
+                    out.write(data)
         except IOError as e:
             raise
 

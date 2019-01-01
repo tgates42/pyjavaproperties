@@ -58,7 +58,7 @@ class PyJavaPropertiesTest(unittest.TestCase):
       self._testParsePropertiesInput(f)
 
   def testParsePropertiesInputBytesIO(self):
-    with open(self.properties_file) as f:
+    with open(self.properties_file, 'rb') as f:
       stream = BytesIO(f.read())
       self._testParsePropertiesInput(stream)
 
